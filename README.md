@@ -3,7 +3,7 @@ Used with AMD.
 
 var ajax = require("ajax-query");
 
-Request:
+**Request:**
 
 	ajaxRequest(opt, callback);
 
@@ -30,7 +30,7 @@ Request:
 	data can be JSON formated object or stringified JSON object 
 		e.g. { "value" : "1" } or "{/"value/" : /"1/" }".
 
-Set timeout of requests:
+**Set timeout of requests:**
 
 	ajaxSetTimeout(timeout, callback)
 
@@ -38,13 +38,13 @@ Set timeout of requests:
 	Default timeout is 5 seconds (5000).
 	Callback is called in case of error.
 
-Set headers of requests:
+**Set headers of requests:**
 
 	ajaxSetHeaders(headers, callback)
 
 	should be an array of JSON objects e.g. [ { "Device-Token" : "qwerty" } ]
 
-Set data type of requests:
+**Set data type of requests:**
 
 	ajaxSetDataType(dataType, callback)
 

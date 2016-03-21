@@ -1,6 +1,4 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-},{}],2:[function(require,module,exports){
 (function(){
     'use strict';
     var $ = require('jquery');
@@ -24,7 +22,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         // INIT
             init : function(url, type, headers, data, callback){
                 this.settings(url, type, headers, data, callback);
-                this.ajaxCall(this, callback);
+                // this.ajaxCall(this, callback);
             },
         // SETTINGS
             settings : function (url, type, headers, data, callback){
@@ -33,6 +31,8 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                 if(headers) this.setHeaders(headers);
                 if(data) this.setData(data);
                 this.callback = callback;
+
+                this.ajaxCall(this, callback);
             },
             setUrl : function(url){
                 this.url = url;
@@ -47,7 +47,16 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                 }
             },
             setHeaders : function(headers){
-                this.headers = headers;
+                var json = []
+                $.map(headers, function (item){
+                    var key = Object.keys(item)[0];
+                    var val = item[key];
+                    json.push({
+                        key : key,
+                        val : val
+                    });
+                });
+                this.headers = json;
             },
             setData : function(data){
                 if(typeof data === 'object' || $.isPlainObject(data)) this.data = JSON.stringify(data);
@@ -79,9 +88,9 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                     url: this.url,
                     data: this.data,
                     beforeSend: function(request){
-                        if(this.headers){
-                            $.map(this.headers, function (item){
-                                request.setRequestHeader(item.title, item.value);
+                        if(self.headers){
+                            $.map(self.headers, function (item){
+                                request.setRequestHeader(item.key, item.val);
                             });
                         }
                     },
@@ -129,16 +138,16 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         ajaxSetDataType : ajaxSetDataType
     };
 })();
-},{"jquery":"jquery"}],3:[function(require,module,exports){
+},{"jquery":"jquery"}],2:[function(require,module,exports){
 var $ = require("jquery");
 var ajax = require("../ajax");
 var template = require("./jade/main.jade");
 $('body').append(template());
 // set headers once
-ajax.ajaxSetHeaders(
-	{ "token" : "qwe"},
-	errorCallback
-);
+// ajax.ajaxSetHeaders(
+// 	{ "token" : "qwe"},
+// 	errorCallback
+// );
 // set datatype once
 ajax.ajaxSetDataType(
 	"json",
@@ -153,11 +162,12 @@ ajax.ajaxSetTimeout(
 var options = {
 	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
 	type : "GET",
-}
-ajax.ajaxRequest(
-	options,
-	callback
-);
+	headers : [ 
+		{ "User-Email" : "christos.chatziioannidis@gmail.com" },
+		{ "User-Token" : "qwerty" }
+	],
+};
+ajax.ajaxRequest(options, callback);
 // an invalid POST request
 var options = {
 	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
@@ -169,6 +179,7 @@ ajax.ajaxRequest(
 	options,
 	callback
 );
+
 // callbacks
 function errorCallback(data){
 	console.log(data);
@@ -178,7 +189,7 @@ function callback(data){
 	if(data.type == "error") $("#result").html(data.errorThrown);
 	else $("#result").html(data);
 }
-},{"../ajax":2,"./jade/main.jade":4,"jquery":"jquery"}],4:[function(require,module,exports){
+},{"../ajax":1,"./jade/main.jade":3,"jquery":"jquery"}],3:[function(require,module,exports){
 var jade = require("jade/runtime");
 
 module.exports = function template(locals) {
@@ -188,7 +199,9 @@ var jade_interp;
 
 buf.push("<div id=\"result\"></div>");;return buf.join("");
 };
-},{"jade/runtime":5}],5:[function(require,module,exports){
+},{"jade/runtime":5}],4:[function(require,module,exports){
+
+},{}],5:[function(require,module,exports){
 (function (global){
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.jade = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
@@ -443,7 +456,7 @@ exports.DebugItem = function DebugItem(lineno, filename) {
 },{}]},{},[1])(1)
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"fs":1}],"jquery":[function(require,module,exports){
+},{"fs":4}],"jquery":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -10287,4 +10300,4 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}]},{},[3]);
+},{}]},{},[2]);

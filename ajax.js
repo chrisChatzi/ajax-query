@@ -21,7 +21,7 @@
         // INIT
             init : function(url, type, headers, data, callback){
                 this.settings(url, type, headers, data, callback);
-                this.ajaxCall(this, callback);
+                // this.ajaxCall(this, callback);
             },
         // SETTINGS
             settings : function (url, type, headers, data, callback){
@@ -30,6 +30,8 @@
                 if(headers) this.setHeaders(headers);
                 if(data) this.setData(data);
                 this.callback = callback;
+
+                this.ajaxCall(this, callback);
             },
             setUrl : function(url){
                 this.url = url;
@@ -44,7 +46,16 @@
                 }
             },
             setHeaders : function(headers){
-                this.headers = headers;
+                var json = []
+                $.map(headers, function (item){
+                    var key = Object.keys(item)[0];
+                    var val = item[key];
+                    json.push({
+                        key : key,
+                        val : val
+                    });
+                });
+                this.headers = json;
             },
             setData : function(data){
                 if(typeof data === 'object' || $.isPlainObject(data)) this.data = JSON.stringify(data);
@@ -76,9 +87,9 @@
                     url: this.url,
                     data: this.data,
                     beforeSend: function(request){
-                        if(this.headers){
-                            $.map(this.headers, function (item){
-                                request.setRequestHeader(item.title, item.value);
+                        if(self.headers){
+                            $.map(self.headers, function (item){
+                                request.setRequestHeader(item.key, item.val);
                             });
                         }
                     },

@@ -51,4 +51,5 @@ Used with AMD.
 	ajaxSetDataType(dataType, callback)
 
 	Must be a valid ajax dataType: ["xml", "html", "script", "json", "jsonp", "text"]
+    Default dataType is "json".
 	Callback is called in case of error.

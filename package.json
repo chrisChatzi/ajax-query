@@ -1,0 +1,22 @@
+{
+  "name": "ajax-query",
+  "version": "1.0.0",
+  "description": "jQuery library for AJAX calls",
+  "main": "ajax.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "chrisChatzi"
+  },
+  "keywords": [
+    "ajax",
+    "jquery"
+  ],
+  "author": "christos.chatzi",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "*"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "ajax-query",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "jQuery library for AJAX calls",
   "main": "ajax.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "chrisChatzi"
+    "url": "https://github.com/chrisChatzi/ajax-query"
   },
   "keywords": [
     "ajax",

@@ -19,7 +19,7 @@ ajax.ajaxSetTimeout(
 );
 // a GET request
 var options = {
-	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
+	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
 	type : "GET",
 	headers : [ 
 		{ "User-Email" : "christos.chatziioannidis@gmail.com" },
@@ -29,7 +29,7 @@ var options = {
 ajax.ajaxRequest(options, callback);
 // an invalid POST request
 var options = {
-	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
+	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
 	type : "PwwOST",
 	headers : "",
 	data : {"value":"1"},

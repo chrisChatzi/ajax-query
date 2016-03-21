@@ -5,7 +5,7 @@ Used with AMD.
 
 **Request:**
 
-	ajaxRequest(opt, callback);
+	> ajaxRequest(opt, callback);
 
 	var options = {
 		url : "https://qwe.qwe",

@@ -46,7 +46,7 @@
                 }
             },
             setHeaders : function(headers){
-                var json = []
+                var json = [];
                 $.map(headers, function (item){
                     var key = Object.keys(item)[0];
                     var val = item[key];
@@ -58,7 +58,7 @@
                 this.headers = json;
             },
             setData : function(data){
-                if(typeof data === 'object' || $.isPlainObject(data)) this.data = JSON.stringify(data);
+                if(typeof data === "object" || $.isPlainObject(data)) this.data = JSON.stringify(data);
                 else this.data = data;
             },
             setDataType : function(dataType, callback){

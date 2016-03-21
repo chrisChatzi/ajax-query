@@ -34,7 +34,8 @@ Used with AMD.
 
 	ajaxSetTimeout(timeout, callback)
 
-	Must be a number e.g 4000 or "4000".
+	Must be a number 
+    	e.g 4000 or "4000".
 	Default timeout is 5 seconds (5000).
 	Callback is called in case of error.
 
@@ -42,7 +43,8 @@ Used with AMD.
 
 	ajaxSetHeaders(headers, callback)
 
-	should be an array of JSON objects e.g. [ { "Device-Token" : "qwerty" } ]
+	should be an array of JSON objects 
+    	e.g. [ { "Device-Token" : "qwerty" } ]
 
 **Set data type of requests:**
 

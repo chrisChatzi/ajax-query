@@ -1,7 +1,7 @@
 Ajax library with the use of jQuery for implementing ajax calls.
 Used with AMD.
 
-var ajax = require("ajax");
+var ajax = require("ajax-query");
 
 Request:
 

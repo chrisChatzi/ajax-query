@@ -162,10 +162,7 @@ ajax.ajaxSetTimeout(
 var options = {
 	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
 	type : "GET",
-	headers : [ 
-		{ "User-Email" : "christos.chatziioannidis@gmail.com" },
-		{ "User-Token" : "qwerty" }
-	],
+	headers : ["qwe"],
 };
 ajax.ajaxRequest(options, callback);
 // an invalid POST request

@@ -23,9 +23,9 @@ Request:
 
 	headers and data fields can be empty or ignored.
 	url and type fields are mandatory.
+
 	headers must be an array of JSON objects e.g. [ {"key1" : "val1" }, { "key2" : "val2" }, ... ]
-	data can be JSON formated object or stringified JSON object,
-	e.g. { "value" : "1" } or "{/"value/" : /"1/" }".
+	data can be JSON formated object or stringified JSON object e.g. { "value" : "1" } or "{/"value/" : /"1/" }".
 
 Set timeout of requests:
 
@@ -39,7 +39,7 @@ Set headers of requests:
 
 	ajaxSetHeaders(headers, callback)
 
-	should be an array of JSON objetcs e.g. [ { "Device-Token" : "qwerty" } ]
+	should be an array of JSON objects e.g. [ { "Device-Token" : "qwerty" } ]
 
 Set data type of requests:
 

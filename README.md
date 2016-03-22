@@ -1,17 +1,23 @@
 Ajax library with the use of jQuery for implementing ajax calls.
 Used with AMD.
 
+You can also install from **Bower**
+
+	bower install ajax-query (--save)
+    
+## Usage
+
 > var ajax = require("ajax-query");
 
 **Request:**
 
-	ajaxRequest(opt, callback);
+	ajax.ajaxRequest(options, callback);
 
 	var options = {
 		url : "https://qwe.qwe",
 		type : "POST",
 		headers : [{"token" : "qwe"}],
-		data : {"value":"1"},
+		data : {"value":"1"}  or  data : JSON.stringify(obj)
 	};
 
 	or
@@ -32,7 +38,7 @@ Used with AMD.
 
 **Set timeout of requests:**
 
-	ajaxSetTimeout(timeout, callback)
+	ajax.ajaxSetTimeout(timeout, callback)
 
 	Must be a number 
     	e.g 4000 or "4000".
@@ -41,15 +47,19 @@ Used with AMD.
 
 **Set headers of requests:**
 
-	ajaxSetHeaders(headers, callback)
+If you use the same headers for all the requests in your application,
+you can set them once and call the _ajaxRequest_ method without the headers option.
 
-	should be an array of JSON objects 
+	ajax.ajaxSetHeaders(headers, callback)
+
+	Should be an array of JSON objects 
     	e.g. [ { "Device-Token" : "qwerty" } ]
 
 **Set data type of requests:**
 
-	ajaxSetDataType(dataType, callback)
+	ajax.ajaxSetDataType(dataType, callback)
 
 	Must be a valid ajax dataType: ["xml", "html", "script", "json", "jsonp", "text"]
     Default dataType is "json".
 	Callback is called in case of error.
+    

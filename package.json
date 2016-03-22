@@ -17,6 +17,7 @@
   "author": "christos.chatzi",
   "license": "ISC",
   "dependencies": {
-    "jquery": "*"
+    "jquery": "*",
+    "bower" : "*"
   }
 }

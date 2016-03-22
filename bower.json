@@ -1,0 +1,24 @@
+{
+  "name": "ajax-query",
+  "homepage": "https://github.com/chrisChatzi/ajax-query",
+  "authors": [
+    "chrisChatzi"
+  ],
+  "description": "Ajax library with the use of jQuery for implementing ajax calls. Used with AMD.",
+  "main": "ajax.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "ajax",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

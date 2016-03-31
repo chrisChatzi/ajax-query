@@ -11,55 +11,62 @@ You can also install from **Bower**
 
 **Request:**
 
-	ajax.ajaxRequest(options, callback);
+```javascript
+ajax.ajaxRequest(options, callback);
 
-	var options = {
-		url : "https://qwe.qwe",
-		type : "POST",
-		headers : [{"token" : "qwe"}],
-		data : {"value":"1"}  or  data : JSON.stringify(obj)
-	};
+var options = {
+	url : "https://qwe.qwe",
+	type : "POST",
+	headers : [{"token" : "qwe"}],
+	data : {"value":"1"}  or  data : JSON.stringify(obj)
+};
 
-	or
+or
 
-	var options = {
-		url : "https://qwe.qwe",
-		type : "GET"
-	};
+var options = {
+	url : "https://qwe.qwe",
+	type : "GET"
+};
 
-	headers and data fields can be empty or ignored.
-	url and type fields are mandatory.
+headers and data fields can be empty or ignored.
+url and type fields are mandatory.
 
-	headers must be an array of JSON objects 
-		e.g. [ {"key1" : "val1" }, { "key2" : "val2" }, ... ]
+headers must be an array of JSON objects 
+	e.g. [ {"key1" : "val1" }, { "key2" : "val2" }, ... ]
 		
-	data can be JSON formated object or stringified JSON object 
-		e.g. { "value" : "1" } or "{/"value/" : /"1/" }".
+data can be JSON formated object or stringified JSON object 
+	e.g. { "value" : "1" } or "{/"value/" : /"1/" }".
+```
 
 **Set timeout of requests:**
 
-	ajax.ajaxSetTimeout(timeout, callback)
+```javascript
+ajax.ajaxSetTimeout(timeout, callback)
 
-	Must be a number 
-    	e.g 4000 or "4000".
-	Default timeout is 5 seconds (5000).
-	Callback is called in case of error.
+Must be a number 
+   	e.g 4000 or "4000".
+Default timeout is 5 seconds (5000).
+Callback is called in case of error.
+```
 
 **Set headers of requests:**
 
 If you use the same headers for all the requests in your application,
 you can set them once and call the _ajaxRequest_ method without the headers option.
 
-	ajax.ajaxSetHeaders(headers, callback)
+```javascript
+ajax.ajaxSetHeaders(headers, callback)
 
-	Should be an array of JSON objects 
-    	e.g. [ { "Device-Token" : "qwerty" } ]
+Should be an array of JSON objects 
+   	e.g. [ { "Device-Token" : "qwerty" } ]
+```
 
 **Set data type of requests:**
 
-	ajax.ajaxSetDataType(dataType, callback)
+```javascript
+ajax.ajaxSetDataType(dataType, callback)
 
-	Must be a valid ajax dataType: ["xml", "html", "script", "json", "jsonp", "text"]
-    Default dataType is "json".
-	Callback is called in case of error.
-    
+Must be a valid ajax dataType: ["xml", "html", "script", "json", "jsonp", "text"]
+Default dataType is "json".
+Callback is called in case of error.
+```

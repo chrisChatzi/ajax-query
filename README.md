@@ -17,6 +17,7 @@ ajax.ajaxRequest(options, callback);
 var options = {
 	url : "https://qwe.qwe",
 	type : "POST",
+    contentType : "application/json; charset=utf-8",
 	headers : [{"token" : "qwe"}],
 	data : {"value":"1"}  or  data : JSON.stringify(obj)
 };
@@ -28,7 +29,7 @@ var options = {
 	type : "GET"
 };
 
-headers and data fields can be empty or ignored.
+contentType, headers and data fields can be empty or ignored.
 url and type fields are mandatory.
 
 headers must be an array of JSON objects 

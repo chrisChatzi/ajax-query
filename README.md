@@ -1,6 +1,8 @@
 Ajax library with the use of jQuery for implementing ajax calls.
 Used with AMD.
 
+**What is new**: _contentType_ can be set on the request
+
 You can also install from **Bower**
 
 	bower install ajax-query (--save)

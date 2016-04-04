@@ -11,6 +11,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         this.headers = [];
         this.data = "";
         this.dataType = "json";
+        this.contentType = "application/x-www-form-urlencoded; charset=UTF-8";
         this.timeout = 5000;
         this.callback = "";
         this.errorType = false;
@@ -20,14 +21,15 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
     ajaxClass.prototype = {
         // INIT
-            init : function(url, type, headers, data, callback){
-                this.settings(url, type, headers, data, callback);
+            init : function(url, type, contentType, headers, data, callback){
+                this.settings(url, type, contentType, headers, data, callback);
                 // this.ajaxCall(this, callback);
             },
         // SETTINGS
-            settings : function (url, type, headers, data, callback){
+            settings : function (url, type, contentType, headers, data, callback){
                 this.setUrl(url);
                 this.setType(type, callback);
+                if(contentType) this.setContentType(contentType);
                 if(headers) this.setHeaders(headers);
                 if(data) this.setData(data);
                 this.callback = callback;
@@ -47,7 +49,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                 }
             },
             setHeaders : function(headers){
-                var json = []
+                var json = [];
                 $.map(headers, function (item){
                     var key = Object.keys(item)[0];
                     var val = item[key];
@@ -59,13 +61,16 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                 this.headers = json;
             },
             setData : function(data){
-                if(typeof data === 'object' || $.isPlainObject(data)) this.data = JSON.stringify(data);
+                if(typeof data === "object" || $.isPlainObject(data)) this.data = JSON.stringify(data);
                 else this.data = data;
             },
             setDataType : function(dataType, callback){
                 var exists = this.checkIfExists(this.dataTypes, dataType);
                 if(exists) this.dataType = dataType;
                 else callback("Data type is invalid");
+            },
+            setContentType : function(contentType, callback){
+                this.contentType = contentType;
             },
             setTimeoutVar : function(timeout, callback){
                 if(isNaN(timeout)) callback("Invalid timeout value");
@@ -87,6 +92,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
                     type: this.type,
                     url: this.url,
                     data: this.data,
+                    contentType: this.contentType,
                     beforeSend: function(request){
                         if(self.headers){
                             $.map(self.headers, function (item){
@@ -116,7 +122,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
         if(!ajaxObj) ajaxObj = new ajaxClass();
         if(!opt.url) callback("URL cannot be empty");
         else if(!opt.type) callback("Type cannot be empty");
-        else ajaxObj.init(opt.url, opt.type, opt.headers, opt.data, callback);
+        else ajaxObj.init(opt.url, opt.type, opt.contentType, opt.headers, opt.data, callback);
     };
     function ajaxSetTimeout(timeout, callback){
         if(!ajaxObj) ajaxObj = new ajaxClass();
@@ -160,14 +166,18 @@ ajax.ajaxSetTimeout(
 );
 // a GET request
 var options = {
-	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
+	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
 	type : "GET",
-	headers : ["qwe"],
+	contentType : "application/json; charset=utf-8",
+	headers : [ 
+		{ "User-Email" : "christos.chatziioannidis@gmail.com" },
+		{ "User-Token" : "qwerty" }
+	],
 };
 ajax.ajaxRequest(options, callback);
 // an invalid POST request
 var options = {
-	url : "https://demo.home2net.com/api/v1/device/FFFF1300FFFFFFFF5130454E2C000D4001/status/io",
+	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
 	type : "PwwOST",
 	headers : "",
 	data : {"value":"1"},

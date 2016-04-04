@@ -21,6 +21,7 @@ ajax.ajaxSetTimeout(
 var options = {
 	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
 	type : "GET",
+	contentType : "application/json; charset=utf-8",
 	headers : [ 
 		{ "User-Email" : "christos.chatziioannidis@gmail.com" },
 		{ "User-Token" : "qwerty" }

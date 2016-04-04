@@ -10,6 +10,7 @@
         this.headers = [];
         this.data = "";
         this.dataType = "json";
+        this.contentType = "application/x-www-form-urlencoded; charset=UTF-8";
         this.timeout = 5000;
         this.callback = "";
         this.errorType = false;
@@ -19,14 +20,15 @@
 
     ajaxClass.prototype = {
         // INIT
-            init : function(url, type, headers, data, callback){
-                this.settings(url, type, headers, data, callback);
+            init : function(url, type, contentType, headers, data, callback){
+                this.settings(url, type, contentType, headers, data, callback);
                 // this.ajaxCall(this, callback);
             },
         // SETTINGS
-            settings : function (url, type, headers, data, callback){
+            settings : function (url, type, contentType, headers, data, callback){
                 this.setUrl(url);
                 this.setType(type, callback);
+                if(contentType) this.setContentType(contentType);
                 if(headers) this.setHeaders(headers);
                 if(data) this.setData(data);
                 this.callback = callback;
@@ -66,6 +68,9 @@
                 if(exists) this.dataType = dataType;
                 else callback("Data type is invalid");
             },
+            setContentType : function(contentType, callback){
+                this.contentType = contentType;
+            },
             setTimeoutVar : function(timeout, callback){
                 if(isNaN(timeout)) callback("Invalid timeout value");
                 else this.timeout = timeout;
@@ -86,6 +91,7 @@
                     type: this.type,
                     url: this.url,
                     data: this.data,
+                    contentType: this.contentType,
                     beforeSend: function(request){
                         if(self.headers){
                             $.map(self.headers, function (item){
@@ -115,7 +121,7 @@
         if(!ajaxObj) ajaxObj = new ajaxClass();
         if(!opt.url) callback("URL cannot be empty");
         else if(!opt.type) callback("Type cannot be empty");
-        else ajaxObj.init(opt.url, opt.type, opt.headers, opt.data, callback);
+        else ajaxObj.init(opt.url, opt.type, opt.contentType, opt.headers, opt.data, callback);
     };
     function ajaxSetTimeout(timeout, callback){
         if(!ajaxObj) ajaxObj = new ajaxClass();

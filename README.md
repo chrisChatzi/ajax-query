@@ -1,7 +1,9 @@
 Ajax library with the use of jQuery for implementing ajax calls.
 Used with AMD.
 
-**What is new**: _contentType_ can be set on the request
+**What is new**: 
+_contentType_ can be set on the request
+_data_ is cleared in case it is not used
 
 You can also install from **Bower**
 

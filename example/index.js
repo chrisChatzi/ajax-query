@@ -17,6 +17,23 @@ ajax.ajaxSetTimeout(
 	"4000", 
 	errorCallback
 );
+
+// an invalid POST request
+var data = '{"op":"r","path":"/net/status"}'+'\n'+
+			'{"op":"r","path":"/config/net"}'+'\n'+
+			'{"op":"r","path":"/usr/lambrecht/config/system"}'+'\n'+
+			'{"op":"r","path":"/config/security"}'+'\n'+
+			'{"op":"r","path":"/usr/lambrecht/config/email"}';
+var options = {
+	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
+	type : "POST",
+	headers : "",
+	data : data,
+}
+ajax.ajaxRequest(
+	options,
+	callback
+);
 // a GET request
 var options = {
 	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
@@ -28,18 +45,6 @@ var options = {
 	],
 };
 ajax.ajaxRequest(options, callback);
-// an invalid POST request
-var options = {
-	url : "https://demo.home2net.com/api/v1/device/F0QWERTYC0D01/status/io",
-	type : "PwwOST",
-	headers : "",
-	data : {"value":"1"},
-}
-ajax.ajaxRequest(
-	options,
-	callback
-);
-
 // callbacks
 function errorCallback(data){
 	console.log(data);

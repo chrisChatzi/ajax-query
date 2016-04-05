@@ -31,6 +31,7 @@
                 if(contentType) this.setContentType(contentType);
                 if(headers) this.setHeaders(headers);
                 if(data) this.setData(data);
+                else this.data = "";
                 this.callback = callback;
 
                 this.ajaxCall(this, callback);
@@ -85,6 +86,7 @@
             },
         //make request
             ajaxCall : function(self, callback){
+                console.log(this.data);
                 if(this.errorType) return;
                 $.ajax({
                     dataType: this.dataType,

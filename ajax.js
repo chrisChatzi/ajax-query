@@ -86,7 +86,6 @@
             },
         //make request
             ajaxCall : function(self, callback){
-                console.log(this.data);
                 if(this.errorType) return;
                 $.ajax({
                     dataType: this.dataType,

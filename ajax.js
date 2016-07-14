@@ -11,7 +11,7 @@
         this.data = "";
         this.dataType = "json";
         this.contentType = "application/x-www-form-urlencoded; charset=UTF-8";
-        this.timeout = 5000;
+        this.timeout = 10000;
         this.callback = "";
         this.errorType = false;
         this.types = ["GET", "POST", "DELETE", "PUT"];

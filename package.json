@@ -1,6 +1,6 @@
 {
   "name": "ajax-query",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "jQuery library for AJAX calls",
   "main": "ajax.js",
   "scripts": {
